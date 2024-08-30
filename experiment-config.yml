@@ -1,0 +1,25 @@
+docker:
+ image: '<your docker image name on docker-hub>'
+ deploy:
+ execute:
+   name: "<your executor name>"
+ finish:
+cloud_config:
+ connection_string: <your azure blob storage connection string>
+ container: <your azure blob storage container name>
+ weather_apikey: "<your weather API key>" #It can be obtained online (e.g., OpenWeather)
+
+
+#This is a runner example according to for a ping runner example! 
+tests:
+ ping:
+   entry_point: "PingClient"
+   runner: "ping"
+   ip: "8.8.8.8"
+   num_pings: "60"
+   test_length: "60"
+   interval: "1"
+
+
+artifacts:
+ path_local: "/artifacts"
